@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-core": "^2.15.1",
+    "aws-sign-mqtt": "^0.0.1",
+    "graphql": "^14.0.0",
+    "mqtt": "^4.1.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.58",
+    "@types/mqtt": "^2.5.0",
+    "@types/node": "^14.0.19",
+    "serverless-plugin-typescript": "^1.1.9",
+    "typescript": "^3.9.6"
+  }
+}

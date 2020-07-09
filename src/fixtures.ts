@@ -1,0 +1,14 @@
+export enum MessageTypes {
+  CREATE_COMMENT = 'CREATE_COMMENT',
+  DELETE_COMMENT = 'DELETE_COMMENT',
+  TYPING_START = 'TYPING_START',
+  TYPING_STOP = 'TYPING_STOP',
+  TYPING_INACTIVE = 'TYPING_INACTIVE'
+}
+
+export enum Stages {
+  START = 'START',
+  HOME = 'HOME',
+  CHAT = 'CHAT'
+}
+

@@ -1,0 +1,63 @@
+service: helium-ws
+
+plugins:
+  - serverless-plugin-typescript
+
+custom:
+  stage: prod
+  debug: "*"
+  deploymentBucket: 'global-deployment-bucket'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${self:custom.stage}
+  region: us-east-1
+  logRetentionInDays: 7
+  deploymentBucket:
+    name: ${self:custom.deploymentBucket}
+  environment:
+    AWS_IOT_HOST: ${ssm:/helium-ws/aws-iot-host}
+  apiKeys:
+    - ${self:custom.stage}-helium-session-key
+  iamRoleStatements:
+    - Effect: "Allow"
+      Resource: "*"
+      Action:
+        - "iot:Connect"
+        - "iot:Publish"
+        - "iot:Subscribe"
+        - "iot:Receive"
+        - "iot:GetThingShadow"
+        - "iot:UpdateThingShadow"
+    - Effect: "Allow"
+      Resource: "*"
+      Action:
+        - "logs:CreateLogGroup"
+        - "logs:CreateLogStream"
+        - "logs:PutLogEvents"
+
+functions:
+  handler:
+    disableLogs: false
+    memorySize: 1536
+    timeout: 300
+    handler: src/handler.handler
+    events:
+      - iot:
+          enabled: true
+          sql: "SELECT * FROM 'helium/new-session'"
+  session:
+    disableLogs: false
+    memorySize: 128
+    timeout: 10
+    handler: src/session.handler
+    events:
+      - http:
+          method: any
+          path: /{id}
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
