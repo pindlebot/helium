@@ -19,8 +19,6 @@ function Chat (props) {
     skip: !data?.isLoggedIn
   })
 
-  console.log(data)
-
   React.useEffect(() => {
     if (data.isLoggedIn) {
       history.push('/conversations')

@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { CardContent, Button } from '@material-ui/core'
-import { List, ListItem, ListItemText, Paper, Fade } from '@material-ui/core'
+import { List, ListItem, ListItemText, Paper } from '@material-ui/core'
 import { useQuery } from '@apollo/client'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 
@@ -13,31 +13,9 @@ import { useCreateConversation } from '../../hooks'
 const formatDate = (str) => distanceInWordsToNow(new Date(str))
 
 const useStyles = makeStyles((theme) => ({
-  // content: {
-  //   padding: '20px',
-  //   backgroundColor: '#fff',
-  //   width: '100%',
-  //   flexBasis: '80%',
-  //   boxSizing: 'border-box',
-  //   overflowY: 'scroll',
-  //   borderBottomLeftRadius: '5px',
-  //   borderBottomRightRadius: '5px',
-  //   boxShadow: 'inset 0 21px 4px -20px rgba(0,0,0,.2)',
-  //   backgroundClip: 'border-box'
-  // },
   content: {
     overflowY: 'scroll',
     flexGrow:1
-  },
-  headerTitle: {
-    color: '#fff',
-    fontSize: 20,
-    padding: 10
-  },
-
-  title: {
-    textAlign: 'center',
-    marginBottom: 20
   },
   actions: {
     borderTop: '1px solid #ddd',

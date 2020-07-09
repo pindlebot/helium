@@ -3,19 +3,9 @@ import { CardContent, Grid, TextField, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
 import ChatCardHeader from '../../components/ChatCardHeader'
-import { useApolloClient } from '@apollo/client'
 import { useCreateUser } from '../../hooks'
 
 const useStyles = makeStyles((theme) => ({
-  // content: {
-  //   // @ts-ignore
-  //   padding: theme.spacing(2),
-  //   backgroundColor: '#fff',
-  //   width: '100%',
-  //   flexBasis: '80%',
-  //   boxSizing: 'border-box',
-  //   overflowY: 'scroll'
-  // },
   content: {
     overflowY: 'scroll'
   },
@@ -23,11 +13,9 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function LoginView (props) {
-  const client = useApolloClient()
   const classes = useStyles(props)
   const createUser = useCreateUser()
 
-  const { history } = props
   const [userName, setUserName] = React.useState('')
 
   const onChange = (evt) => {
@@ -36,8 +24,6 @@ function LoginView (props) {
 
   const onCreateUser = async () => {
     await createUser({ name: userName })
-    // await client.resetStore()
-    // history.push('/conversations')
   }
 
   const onKeyDown = (evt) => {

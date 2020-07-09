@@ -8,12 +8,6 @@ export default makeStyles((theme) => ({
     left: '0',
     top: '0'
   },
-  container: {
-    position: 'relative',
-    width: '100%',
-    height: '100%',
-    boxSizing: 'border-box'
-  },
   chat: {
     position: 'absolute',
     right: '0',

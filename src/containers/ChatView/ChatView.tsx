@@ -72,7 +72,6 @@ function ChatView (props) {
   const onMessage = (topic, buffer) => {
     if (topic !== `helium/${conversation.id}`) return
     const message = JSON.parse(buffer.toString())
-    console.log(message)
     if (message.userId === user.id) return
     const data = readConversation()
 
@@ -195,7 +194,6 @@ function ChatView (props) {
   }, [conversation])
 
   const setChannel = (channel) => {
-    console.log(channel)
     channelRef.current = channel
   }
 
